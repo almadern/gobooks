@@ -1,27 +1,29 @@
 <h1>
-Телеграм бот для выдачи книг в формате fb2 и epub из личной библиотеке в формате inpx запакованных в zip архивы в формате fb2 и epub
+Telegram Bot for Providing Books in FB2 and EPUB Formats from a Personal Library in INPX Format Packed in ZIP Archives in FB2 and EPUB Formats
 </h1>
 
-### Бот работает с домашней inpx библиотекой и архивами с книгами. 
-- Может хранить и обрабатывать данные в 3 разных формата: 
-    - file(без БД, при каждом запросе проверяется все библиотека.Самый медленный вариант работы)
-    - sqlite(работает и хранит данные в sqlite библиотеке. Средняя скорость работы, и долгая инициализация базы данных - может занимать от 2 минут до 5 часов(в зависмости от того где запущено приложение)),        
-    - postgres(хранит данные в PostgreSQL. Самый быстрый вариант работы. инициализация происходит быстрее за счет многопоточности)
-- Может работать как в виде бинарного файла c поддержкой конфигурационного файла формата: 
+[on russian](https://github.com/almadern/gobooks/edit/main/README.md)
+
+### The bot works with a home INPX library and book archives.
+- It can store and process data in three different formats:
+    - file (without a database, the entire library is checked with each request. This is the slowest operation mode)
+    - sqlite (works with and stores data in an SQLite database. It has average operation speed, but long database initialization - it can take from 2 minutes to 5 hours depending on where the application is running)
+    - postgres (stores data in PostgreSQL. This is the fastest operation mode, with faster initialization due to multithreading)
+- It can run as a binary file with support for a configuration file in formats such as:
     - yaml
     - json
     - toml
-    - получать через переменные при запуске
-    - в докер контейнере получая конфигурацию через переменные окружение.
+    - environment variables during startup
+    - in a Docker container receiving configuration through environment variables.
 
-### Из дополнительных фич:
-    - Возможность сохранять последний запрос пользователя(по дефолту выключено)
-    - Авто проверка базы данных на соответсвие с inpx библиотекой
-    - Имеется возможность включения web страницы для поиска книг(по дефолту выключено) 
-    - Возможность поиска книг на определенном языке - добавляется двухсимвольный формат в конце запроса: ru,en и т.д. по дефолту en, если значение установлено то добавлять язык не надо. Бот может отвечать на выбранному по умолчанию языку(поддерживается en и ru). Значение задается через --language в консоли и LANGUAGE в конфигурационном файле\env
-    - Ограничение доступа к боту. Доступно 3 варианта: полный доступ(Оба списка остаются пустыми), доступ с blacklist(заполняется только BLACKLIST), ограниченный доступ через whitelist(заолняется только WHITELIST)
+### Additional features:
+    - Ability to save the user's last request (disabled by default)
+    - Auto-checking the database for compliance with the INPX library
+    - Option to enable a web page for book search (disabled by default)
+    - Ability to search for books in a specific language - a two-letter code is added at the end of the query: ru, en, etc. By default, it is set to en, and if a value is set, there is no need to add the language. The bot can respond in the default language (supports en and ru). The value is set through --language in the console and LANGUAGE in the configuration file/env.
+    - Restricting access to the bot. Three options are available: full access (both lists remain empty), access with a blacklist (only BLACKLIST is filled), restricted access through a whitelist (only WHITELIST is filled).
 
-### Пример docker-compose для sqlite:
+### Sample docker-compose for sqlite:
 ``` 
 version: "3"
   services:
@@ -45,7 +47,7 @@ version: "3"
     depends_on:
       - postgres`
 ```
-### Пример docker-compose для postgres:
+### Sample docker-compose for postgres:
 ```
 version: "3"
   
@@ -89,7 +91,7 @@ services:
 volumes:
   pgdata:
 ```
-### Пример docker-compose для file:
+### Sample docker-compose for file:
 ```
 services:
   gobooks:
@@ -108,19 +110,19 @@ services:
     volumes:
       - /books:/books:ro`
 ```
-Собрать из исходников(предполагается, что go уже установлен в системе и доступен)
+Build from sources (assuming that go is already installed on the system and is available)
 ```
 GOARCH=<arch> GOOS=<os> go build -o gobooks main.go
 ```
-Пример запуска через бинарный файл без конфигурации:
+Example of launching via a binary file without configuration:
 ```
 ./gobooks --Telegram true --Web false --token <mytoken> etc.(for full list use --help)
 ```
-Пример запуска через бинарный файл c конфигурацией:
+Example of launching via a binary file with configuration:
 ```
 gobooks --config /path/to/config
 ```
-Пример конфига:
+Example config:
 ```
 DB = "sqlite" # file , sqlite, postgres
 DB_DB = "/var/test.db" # if file = nothing is need to be set if sqlite = path to db if postgres = database when will be stored books
