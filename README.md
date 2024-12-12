@@ -44,8 +44,6 @@ version: "3"
       LANGUAGE: "en"
     volumes:
       - /books:/books:ro
-    depends_on:
-      - postgres`
 ```
 ### Sample docker-compose for postgres:
 ```
