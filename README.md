@@ -2,7 +2,7 @@
 Telegram Bot for Providing Books in FB2 and EPUB Formats from a Personal Library in INPX Format Packed in ZIP Archives in FB2 and EPUB Formats
 </h1>
 
-[on russian](https://github.com/almadern/gobooks/edit/main/README.md)
+[on russian](https://github.com/almadern/gobooks/edit/main/README_rus.md)
 
 ### The bot works with a home INPX library and book archives.
 - It can store and process data in three different formats:
