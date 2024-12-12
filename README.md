@@ -26,7 +26,7 @@
 version: "3"
   services:
   gobooks:
-    image: gobooks:latest
+    image: almadern/gobooks
     container_name: gobooks
     restart: always
     environment:
@@ -51,7 +51,7 @@ version: "3"
   
 services:
   gobooks:
-    image: gobooks:latest
+    image: almadern/gobooks
     container_name: gobooks
     restart: always
     environment:
@@ -93,7 +93,7 @@ volumes:
 ```
 services:
   gobooks:
-    image: gobooks:latest
+    image: almadern/gobooks 
     container_name: gobooks
     restart: always
     environment:
