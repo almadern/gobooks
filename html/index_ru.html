@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Поиск Книг</title>
+</head>
+
+<body bgcolor="#2a2a2e" text="white">
+    <h1>Поиск книг</h1>
+    <div>
+        <form action="/found" method="POST">
+            <label for="search_type"><strong>Поиск:&emsp;</strong></label>
+                <select name="search_type" id="search_type">
+                    <option value="Author">Автор</option>
+                    <option value="Title">Название</option>
+                    <option value="Series">Серия</option>
+                </select>
+                <input type="text" name="search_query" placeholder="Что ищем?">
+
+                <div>
+                    <br>
+                    <laber for="format">Формат книги:&emsp;</label>
+                        <select name="format" id="format" required>
+                            <option value="epub">EPUB</option>
+                            <option value="fb2">FB2</option>
+                        </select>
+                </div>
+                <div>
+                    <br>
+                    <laber for="language">Язык книги:&emsp;</label>
+                        <select name="language" id="language" required>
+                            <option value="ru">Русский</option>
+                            <option value="en">English</option>
+                            <option value="du">Deutch</option>
+                        </select>
+                </div>
+                <br>
+                <input type="hidden" name="webIdent" value="{{.WebIdent}}">
+                <input type="submit" value="Искать">
+        </form>
+    </div>
+    <p>Поиск и настройка осуществляются при помощи предоставленных выше полей</p>
+    <p>Каждое поле осуществялет поиск по своему параметру:</p>
+    <ul>
+        <li><strong>Поиск</strong> - имеет 3 поля по которым будет производиться поиск
+        <ul>
+        <li><strong>Автор</strong> - поиск по автору книги. Пример: Айзек Азимов</li>
+        <li><strong>Название</strong> - поиск по названию книги. Пример: Мечтаю ли андроиды об электроовцах</li>
+        <li><strong>Серия</strong> - поиск по серии книг. Пример: Песнь льда и пламени</li>
+        </ul>
+        <li><strong>Формат книги</strong> - В каком формате будет предоставленна книга</li>
+        <li><strong>Язык книги</strong> - На каком языке будут предоставлены книги</li>
+    </ul>
+    <p> После нажатия на кнопку "Искать" старница может быть пустой какое-то время. <br>Это нормальное поведение - сервер обробатывает данные, и выдаст вам их как процесс поиска будет закончен</p>
+    <p><strong>
+            <font color="red">ВАЖНО</font>
+        </strong>: Поиск может не найти книг, даже если вы знаете, что они должны быть.
+        <br>&emsp;&emsp;&emsp;&emsp;&ensp;Если это произошло попробуйте изменить поисковый запрос:
+    </p>
+    <ul>
+        <li>Указать альтернативное значение для названия\серии\автора</li>
+        <li>Выполнить поиск на вашем языке</li>
+    </ul>
+    <center>
+        <a href="https://github.com/almadern" target="_blank">Github</a>
+    </center>
+</body>
+
+</html>
+

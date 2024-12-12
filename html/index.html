@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Find books</title>
+</head>
+
+<body bgcolor="#2a2a2e" text="white">
+    <h1>Find books</h1>
+    <div>
+        <form action="/found" method="POST">
+            <label for="search_type"><strong>Search:&emsp;</strong></label>
+                <select name="search_type" id="search_type">
+                    <option value="Author">Author</option>
+                    <option value="Title">Title</option>
+                    <option value="Series">Series</option>
+                </select>
+                <input type="text" name="search_query" placeholder="What are we looking for?">
+
+                <div>
+                    <br>
+                    <laber for="format">Output book format:&emsp;</label>
+                        <select name="format" id="format" required>
+                            <option value="epub">EPUB</option>
+                            <option value="fb2">FB2</option>
+                        </select>
+                </div>
+                <div>
+                    <br>
+                    <laber for="language">Language:&emsp;</label>
+                        <select name="language" id="language" required>
+                            <option value="ru">Русский</option>
+                            <option value="en">English</option>
+                        </select>
+                </div>
+                <br>
+                <input type="hidden" name="webIdent" value="{{.WebIdent}}">
+                <input type="submit" value="Искать">
+        </form>
+    </div>
+    <p>Search and configuration are carried out using the fields provided above</p>
+    <p>Each field searches by its own parameter:</p>
+    <ul>
+        <li><strong>Search</strong> - has 3 fields that will be used to search
+        <ul>
+        <li><strong>Author</strong> - search by book author. Example: Isaac Asimov</li>
+        <li><strong>Title</strong> - Search by book title. Example: Do Androids Dream of Electric Sheep?</li>
+        <li><strong>Series</strong> - search by book series. Example: A Song of Ice and Fire</li>
+        </ul>
+        <li><strong>Output book format</strong> - In what format will the book be provided</li>
+        <li><strong>Language</strong> - In what language will the books be provided?</li>
+    </ul>
+    <p> After clicking on the "Search" button, the page may be empty for some time. <br>This is normal behavior - the server processes the data and will return it to you when the search process is completed</p>
+    <p><strong>
+            <font color="red">IMPORTANT</font>
+        </strong>: A search may not find books even if you know there should be some. 
+        <br>&emsp;&emsp;&emsp;&emsp;&ensp;If this happens, try changing your search query:
+    </p>
+    <ul>
+        <li>Specify an alternative value for title\series\author</li>
+        <li>Search in your language</li>
+    </ul>
+    <center>
+        <a href="https://github.com/almadern" target="_blank">Github</a>
+    </center>
+</body>
+
+</html>

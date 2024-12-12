@@ -1,0 +1,1 @@
+Converter from [repo](https://github.com/rupor-github/fb2converter/tree/master). I tried to find a way to use the repository as a library, but it turned out to be easier to use binary files (in the future it may be possible to expand the formats and add new converters, at the moment there is only 1) 
