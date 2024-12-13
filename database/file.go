@@ -44,8 +44,6 @@ func (p *Pagenator) FileFind(path string, field string, request []string, lang s
 		})
 		i++
 	}
-
-	if arguments.Config.Restore {
 		// create(or open file) by user ID to store searched books
 		// userID for normal filename in OS(in full used $ and \n)
 		options := os.O_WRONLY | os.O_APPEND | os.O_CREATE
@@ -66,7 +64,6 @@ func (p *Pagenator) FileFind(path string, field string, request []string, lang s
 				return nil
 			}
 		}
-	}
 	p.FileWrtieUserInfo()
 	return filepaths
 }
